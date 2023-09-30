@@ -10,7 +10,11 @@ import java.util.Random;
 
 /**
  *
- * @author Asus
+* @author Asus
+ * prénom : Oscar
+ * nom : Hunaut
+ * groupe : TDC
+ * date : 18/09
  */
 public class TP1_stats_Hunaut {
 
