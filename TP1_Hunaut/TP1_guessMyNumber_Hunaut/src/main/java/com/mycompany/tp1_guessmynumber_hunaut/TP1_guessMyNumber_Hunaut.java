@@ -10,7 +10,11 @@ import java.util.Scanner;
 
 /**
  *
- * @author Asus
+* @author Asus
+ * prénom : Oscar
+ * nom : Hunaut
+ * groupe : TDC
+ * date : 18/09
  */
 public class TP1_guessMyNumber_Hunaut {
 
@@ -116,7 +120,7 @@ public class TP1_guessMyNumber_Hunaut {
                 g = sc.nextInt();
                 while (g!=v) {
                     int proba = generateurAleat.nextInt(10);
-                    if (proba<=3) {
+                    if (proba<3) {
                         if (v>g){
                             System.out.println("trop grand !");
                             g = sc.nextInt();
