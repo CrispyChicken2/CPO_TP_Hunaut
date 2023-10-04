@@ -8,6 +8,9 @@ package com.mycompany.tp2_bieres_hunaut;
 /**
  *
  * @author Asus
+ * Prénom : Oscar
+ * Nom : Hunaut
+ * TDC
  */
 public class TP2_Bieres_Hunaut {
 
