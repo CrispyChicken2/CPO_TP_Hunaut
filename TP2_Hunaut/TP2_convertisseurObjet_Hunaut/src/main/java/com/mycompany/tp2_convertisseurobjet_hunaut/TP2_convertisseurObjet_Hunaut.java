@@ -9,6 +9,9 @@ import java.util.Scanner;
 /**
  *
  * @author Asus
+ * Prénom : Oscar
+ * Nom : Hunaut
+ * TDC
  */
 public class TP2_convertisseurObjet_Hunaut {
 
