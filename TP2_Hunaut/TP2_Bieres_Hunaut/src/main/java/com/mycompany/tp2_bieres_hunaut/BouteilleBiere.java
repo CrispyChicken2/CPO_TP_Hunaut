@@ -7,6 +7,9 @@ package com.mycompany.tp2_bieres_hunaut;
 /**
  *
  * @author Asus
+ * Prénom : Oscar
+ * Nom : Hunaut
+ * TDC
  */
 public class BouteilleBiere {
     String nom ;
