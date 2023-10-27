@@ -15,19 +15,8 @@ public class LightsOff_Hunaut_version_console {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        CelluleLumineuse Lampadaire = new CelluleLumineuse(false);
-        CelluleLumineuse Decoration_de_Noel = new CelluleLumineuse(false);
-        Decoration_de_Noel.getEtat();
-        Lampadaire.getEtat();
-        Lampadaire.activerCellule();
-        Decoration_de_Noel.activerCellule();
-        Decoration_de_Noel.getEtat();
-        Lampadaire.getEtat();
-        GrilleDeCellules OUI = new GrilleDeCellules(5,5);
-        System.out.println(OUI.toString());
-        OUI.melangerMatriceAleatoirement(2);
-        System.out.println(OUI.toString());
-        
-    
+        Partie BETA = new Partie();
+        BETA.initialiserPartie();
+        BETA.lancerPartie();
     }
 }
