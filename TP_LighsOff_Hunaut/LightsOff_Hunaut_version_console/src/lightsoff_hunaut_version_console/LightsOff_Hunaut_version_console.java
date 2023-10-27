@@ -23,6 +23,11 @@ public class LightsOff_Hunaut_version_console {
         Decoration_de_Noel.activerCellule();
         Decoration_de_Noel.getEtat();
         Lampadaire.getEtat();
-    }
+        GrilleDeCellules OUI = new GrilleDeCellules(5,5);
+        System.out.println(OUI.toString());
+        OUI.melangerMatriceAleatoirement(2);
+        System.out.println(OUI.toString());
+        
     
+    }
 }
