@@ -45,7 +45,7 @@ public class GrilleDeCellules {
     @Override
     public String toString () { 
         String CAR ="" ;
-        for (int x = 0 ; x < (this.Nb_Lignes)/2-1 ; x++){
+        for (int x = 0 ; x < (this.Nb_Lignes)/2-2 ; x++){
             if (x==0){
                 for (int d=0 ; d<this.Nb_Colonnes+1 ; d++){
                     if (d==0){
