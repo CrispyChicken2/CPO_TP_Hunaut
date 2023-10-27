@@ -12,7 +12,7 @@ package lightsoff_hunaut_version_console;
  * Boolean Etat
  */
 public class CelluleLumineuse {
-    private boolean Etat ;
+    boolean Etat ;
     
     /**
      *
@@ -82,7 +82,7 @@ public class CelluleLumineuse {
      * @return
      * Methode permettant d'afficher l'etat d'un objet de la classe celluleLumineuse sous forme de string
      */
-    @Override
+    
     public String toString () {
     String chaine_a_retourner ;
     if (this.Etat == true){
