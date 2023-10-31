@@ -5,6 +5,7 @@
 package lightsoff_hunaut_version_console;
 
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -15,7 +16,9 @@ public class Partie {
     int nbCoups ;
     
     /**
-     *Methode qui initailise le nombre de coups a 0 et genere une grille de jeu vierge ( avec les lumieres off)
+     * Constructeur qui initailise le nombre de coups a 0 et genere une grille de jeu vierge ( avec les lumieres off)
+     * Modification : la fonction prend un parametre de type int qui definit la difficulté 
+     * de la partie et donc la taille de la grille
      */
     public Partie(){
         this.nbCoups = 0  ;
@@ -24,13 +27,60 @@ public class Partie {
     
     /**
      *Methode qui mealange la grille 8 tours et s'assure qu'elle est bien melangée, sinon la remelange
+     * Modifications :
+     * --> Creation de difficultés de jeu qui impactent le nombre de mélanges 
+     * éffectués lors de l'initlaisation de la partie
      */
     public void initialiserPartie(){
-        this.grille.melangerMatriceAleatoirement(8);
-        if (this.grille.cellulesToutesEteintes()==true){   
-        } else {
-            this.grille.melangerMatriceAleatoirement(8);
+        String str = null ;
+        Scanner sc;
+        sc = new Scanner(System.in) ;
+        System.out.println("Veuillez saisir une difficulté : \n" + "1) Facile \n" + "2) Normal \n" + "3) Difficile \n" + "4) Hardcore");
+        str = sc.nextLine();
+        if (null==str) {
+                System.out.println("Choisissez une difficulté parmis celles disponibles") ;
+            } else switch (str) {
+                case "Facile ":
+                case "1" :
+                    this.grille.melangerMatriceAleatoirement(3);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(3);
+                    }
+                    break;
+                case "Normal":
+                case "2":
+                    this.grille.melangerMatriceAleatoirement(6);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(6);
+                    }
+                    break;
+                case "Difficile":
+                case "3":
+                    this.grille.melangerMatriceAleatoirement(9);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(9);
+                    }                       
+                    break;
+                case "Hardcore":
+                case "4":
+                    System.out.println("Attention ! : La grille n'est pas forcement solvable dans ce mode !");
+                    Random rand = new Random() ;
+                    for (int a=0;a<this.grille.Nb_Lignes;a++){
+                        for (int b = 0; b<this.grille.Nb_Colonnes;b++){
+                            int r = rand.nextInt(2);
+                            if (r==0){
+                                this.grille.matriceCellules[a][b].Etat = false ;
+                            } else {
+                                this.grille.matriceCellules[a][b].Etat = true ;
+                            }    
+            }
         }
+                default:
+                    break;
+            }
     }
     
     /**
@@ -54,7 +104,7 @@ public class Partie {
                                    4 ) activer la diagonale descendante""");
                 str = sc.nextLine();
                 if (null==str) {
-                System.out.println("Choisissez un coup parmis ceux disponible") ;
+                System.out.println("Choisissez un coup parmis ceux disponibles") ;
             } else switch (str) {
                 case "activer une ligne":
                 case "1" :
@@ -94,5 +144,64 @@ public class Partie {
         System.out.println("----------------------------------------------");
         System.out.println(this.grille.toString());
         System.out.println("Felicitations !! Vous avez termine la partie en " + Nb_Coups +  " coups !");
+    }
+    
+    public void JEU(){
+        String str = null ;
+        Scanner sc;
+        sc = new Scanner(System.in) ;
+        this.nbCoups = 0  ;
+        System.out.println("Veuillez saisir une difficulte : \n" + "1) Facile \n" + "2) Normal \n" + "3) Difficile \n" + "4) Hardcore");
+        str = sc.nextLine();
+        if (null== str ){
+            System.out.println("Choisissez une difficulté parmis celles disponibles") ;
+        } else switch (str) {
+            case "1":
+            case "Facile":
+                grille = new GrilleDeCellules(3,3);
+                this.grille.melangerMatriceAleatoirement(3);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(3);
+                    }
+                break;
+            case "2":
+            case "Normal":
+                grille = new GrilleDeCellules(6,6);
+                this.grille.melangerMatriceAleatoirement(6);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(6);
+                    }
+                break;
+            case "3":
+            case "Difficile":
+                grille = new GrilleDeCellules(9,9);
+                this.grille.melangerMatriceAleatoirement(9);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(9);
+                    }
+                break;
+            case "4":
+            case "Hardcore":
+                grille = new GrilleDeCellules(5,15);
+                System.out.println("Attention ! : La grille n'est pas forcement solvable dans ce mode !");
+                    Random rand = new Random() ;
+                    for (int a=0;a<this.grille.Nb_Lignes;a++){
+                        for (int b = 0; b<this.grille.Nb_Colonnes;b++){
+                            int r = rand.nextInt(2);
+                            if (r==0){
+                                this.grille.matriceCellules[a][b].Etat = false ;
+                            } else {
+                                this.grille.matriceCellules[a][b].Etat = true ;
+                            }    
+            }
+        }
+                break;
+            default:
+                break;
+        }
+
     }
 }
