@@ -83,6 +83,7 @@ public class CelluleLumineuse {
      * Methode permettant d'afficher l'etat d'un objet de la classe celluleLumineuse sous forme de string
      */
     
+    @Override
     public String toString () {
     String chaine_a_retourner ;
     if (this.Etat == true){
