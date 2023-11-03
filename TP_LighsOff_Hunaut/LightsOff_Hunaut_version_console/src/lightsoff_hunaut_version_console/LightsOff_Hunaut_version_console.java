@@ -12,11 +12,13 @@ public class LightsOff_Hunaut_version_console {
 
     /**
      * @param args the command line arguments
+     *  
+     *  BETA.JEU();
      */
     public static void main(String[] args) {
         // TODO code application logic here
         Partie BETA = new Partie();
-        BETA.initialiserPartie();
+        BETA.initialiserPartie2();
         BETA.lancerPartie();
     }
 }
