@@ -22,20 +22,49 @@ public class Partie {
      */
     public Partie(){
         this.nbCoups = 0  ;
-        grille = new GrilleDeCellules(7,7);
+        String STR ;
+        Scanner sp;
+        sp = new Scanner(System.in);
+        System.out.println("Veuillez saisir une difficulte : \n" + "1) Facile \n" + "2) Normal \n" + "3) Difficile \n" + "4) Hardcore");
+        STR = sp.nextLine() ;
+        if (null==STR) {
+                System.out.println("Choisissez une difficulté parmis celles disponibles") ;
+            } else switch (STR) {
+                case "Facile ":
+                case "1" :
+                    grille = new GrilleDeCellules(4,4);
+                    break;
+                case "Normal":
+                case "2":
+                    grille = new GrilleDeCellules(7,7);
+                    break;
+                case "Difficile":
+                case "3":
+                    grille = new GrilleDeCellules(10,10);                  
+                    break;
+                case "Hardcore":
+                case "4":
+                    grille = new GrilleDeCellules(14,18);
+                    break;
+                default:
+                    break;
+            }
+        
     }
     
     /**
+     * NON UTILISE
      *Methode qui mealange la grille 8 tours et s'assure qu'elle est bien melangée, sinon la remelange
      * Modifications :
      * --> Creation de difficultés de jeu qui impactent le nombre de mélanges 
      * éffectués lors de l'initlaisation de la partie
+     * ---> Desormais inutile
      */
     public void initialiserPartie(){
         String str = null ;
         Scanner sc;
         sc = new Scanner(System.in) ;
-        System.out.println("Veuillez saisir une difficulté : \n" + "1) Facile \n" + "2) Normal \n" + "3) Difficile \n" + "4) Hardcore");
+        System.out.println("Veuillez saisir une difficulte : \n" + "1) Facile \n" + "2) Normal \n" + "3) Difficile \n" + "4) Hardcore");
         str = sc.nextLine();
         if (null==str) {
                 System.out.println("Choisissez une difficulté parmis celles disponibles") ;
@@ -66,6 +95,57 @@ public class Partie {
                     break;
                 case "Hardcore":
                 case "4":
+                    System.out.println("Attention ! : La grille n'est pas forcement solvable dans ce mode !");
+                    Random rand = new Random() ;
+                    for (int a=0;a<this.grille.Nb_Lignes;a++){
+                        for (int b = 0; b<this.grille.Nb_Colonnes;b++){
+                            int r = rand.nextInt(2);
+                            if (r==0){
+                                this.grille.matriceCellules[a][b].Etat = false ;
+                            } else {
+                                this.grille.matriceCellules[a][b].Etat = true ;
+                            }    
+            }
+        }
+                default:
+                    break;
+            }
+    }
+    
+     /**
+     *Methode qui mealange la grille 8 tours et s'assure qu'elle est bien melangée, sinon la remelange
+     * Modifications :
+     * --> Creation de difficultés de jeu qui impactent le nombre de mélanges 
+     * éffectués lors de l'initlaisation de la partie
+     * Modification : melange la matrice en focntion du nombre de lignes de la matrice
+     *                qui depends de la difficulté de la partie demandé dans le constructeur 
+     */
+    public void initialiserPartie2 (){
+        if (this.grille.Nb_Lignes==0) {
+                System.out.println("Choisissez une difficulté parmis celles disponibles") ;
+            } else switch (this.grille.Nb_Lignes) {
+                case 4:
+                    this.grille.melangerMatriceAleatoirement(3);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(3);
+                    }
+                    break;
+                case 7:
+                    this.grille.melangerMatriceAleatoirement(6);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(6);
+                    }
+                    break;
+                case 10:
+                    this.grille.melangerMatriceAleatoirement(9);
+                    if (this.grille.cellulesToutesEteintes()==true){   
+                    } else {
+                    this.grille.melangerMatriceAleatoirement(9);
+                    }                       
+                    break;
+                case 14:
                     System.out.println("Attention ! : La grille n'est pas forcement solvable dans ce mode !");
                     Random rand = new Random() ;
                     for (int a=0;a<this.grille.Nb_Lignes;a++){
@@ -145,7 +225,10 @@ public class Partie {
         System.out.println(this.grille.toString());
         System.out.println("Felicitations !! Vous avez termine la partie en " + Nb_Coups +  " coups !");
     }
-    
+     
+    /**
+     * NON UTILISE
+     */
     public void JEU(){
         String str = null ;
         Scanner sc;
